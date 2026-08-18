@@ -1,5 +1,5 @@
 ### EX6 Information Retrieval Using Vector Space Model in Python
-### DATE: 
+### DATE: 19.08.2026
 ### AIM: To implement Information Retrieval Using Vector Space Model in Python.
 ### Description: 
 <div align = "justify">
@@ -50,7 +50,8 @@ sklearn to demonstrate Information Retrieval using the Vector Space Model.
     tfidf_matrix = tfidf_vectorizer.fit_transform(preprocessed_docs.values())
 
 ###### Calculate cosine similarity between query and documents
-    ddef search(query, tfidf_matrix, tfidf_vectorizer):
+    def search(query, tfidf_matrix, tfidf_vectorizer):
+
     # Preprocess the query
     processed_query = preprocess_text(query)
 
@@ -66,8 +67,7 @@ sklearn to demonstrate Information Retrieval using the Vector Space Model.
     # Get document IDs
     doc_ids = list(documents.keys())
 
-    # Create results containing:
-    # (Document ID, Document, Similarity Score)
+    # Store search results
     results = []
 
     for doc_id, score in zip(doc_ids, similarities):
@@ -75,7 +75,7 @@ sklearn to demonstrate Information Retrieval using the Vector Space Model.
             (doc_id, documents[doc_id], score)
         )
 
-    # Sort by similarity score in descending order
+    # Sort by similarity score
     results.sort(
         key=lambda x: x[2],
         reverse=True
@@ -104,4 +104,8 @@ sklearn to demonstrate Information Retrieval using the Vector Space Model.
 
 ### Output:
 
+<img width="996" height="671" alt="Screenshot 2026-08-18 115011" src="https://github.com/user-attachments/assets/5f4bb8e8-9932-4305-b5d9-a4057b9698f4" />
+
 ### Result:
+
+Thus, the implementation of Information Retrieval Using Vector Space Model in Python is executed successfully.
