@@ -50,8 +50,38 @@ sklearn to demonstrate Information Retrieval using the Vector Space Model.
     tfidf_matrix = tfidf_vectorizer.fit_transform(preprocessed_docs.values())
 
 ###### Calculate cosine similarity between query and documents
-    def search(query, tfidf_matrix, tfidf_vectorizer):
-        //TYPE YOUR CODE HERE
+    ddef search(query, tfidf_matrix, tfidf_vectorizer):
+    # Preprocess the query
+    processed_query = preprocess_text(query)
+
+    # Convert query into TF-IDF vector
+    query_vector = tfidf_vectorizer.transform([processed_query])
+
+    # Calculate cosine similarity
+    similarities = cosine_similarity(
+        query_vector,
+        tfidf_matrix
+    ).flatten()
+
+    # Get document IDs
+    doc_ids = list(documents.keys())
+
+    # Create results containing:
+    # (Document ID, Document, Similarity Score)
+    results = []
+
+    for doc_id, score in zip(doc_ids, similarities):
+        results.append(
+            (doc_id, documents[doc_id], score)
+        )
+
+    # Sort by similarity score in descending order
+    results.sort(
+        key=lambda x: x[2],
+        reverse=True
+    )
+
+    return results
 
 ###### Get input from user
     query = input("Enter your query: ")
